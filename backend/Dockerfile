@@ -1,6 +1,18 @@
 # pull official base image
-FROM python:3.11.4-slim-buster
+FROM python:3.10-slim-buster
 
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    default-libmysqlclient-dev \
+    python3-dev \
+    libssl-dev \
+    libffi-dev \
+    pkg-config \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+# RUN apt-get update
+# RUN apt-get install gcc default-libmysqlclient-dev -y
 # set work directory
 WORKDIR /usr/src/app
 
@@ -12,6 +24,7 @@ ENV PYTHONUNBUFFERED 1
 RUN apt-get update && apt-get install -y netcat
 
 # install dependencies
+RUN pip install -U pip setuptools wheel
 RUN pip install --upgrade pip
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt

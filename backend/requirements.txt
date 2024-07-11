@@ -1,6 +1,5 @@
-Django==5.0.6
-psycopg2-binary==2.9.9
-gunicorn==22.0.0
+Django
+gunicorn
 
 celery
 django-autoslug
@@ -17,7 +16,8 @@ django-redis
 python-dotenv
 google-api-python-client-stubs
 
-psycopg2-binary
+mysqlclient
+mysql-connector-python
 gunicorn
 
 icecream

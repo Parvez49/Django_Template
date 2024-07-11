@@ -1,14 +1,14 @@
 #!/bin/sh
 
-if [ "$DATABASE" = "postgres" ]
+if [ "$DATABASE" = "mysql" ]
 then
-    echo "Waiting for postgres..."
+    echo "Waiting for MySQL..."
 
-    while ! nc -z $SQL_HOST $SQL_PORT; do
+    while ! mysqladmin ping -h"$SQL_HOST" -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" --silent; do
       sleep 0.1
     done
 
-    echo "PostgreSQL started"
+    echo "MySQl started"
 fi
 
 # python manage.py flush --no-input
