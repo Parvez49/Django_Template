@@ -2,6 +2,7 @@ Django==5.0.6
 psycopg2-binary==2.9.9
 gunicorn==22.0.0
 
+celery
 django-autoslug
 django-cors-headers
 django-filter
@@ -11,13 +12,16 @@ django-versatileimagefield
 django-dirtyfields
 djangorestframework
 djangorestframework-simplejwt
+django-redis
+
 python-dotenv
-icecream
 google-api-python-client-stubs
 
 psycopg2-binary
 gunicorn
 
+icecream
+flower
 flake8
 drf-spectacular
 django-debug-toolbar

@@ -237,3 +237,35 @@ if DEBUG:
         "VERSION": "1.0.0",
         "SCHEMA_PATH_PREFIX": "/api\v[0-9]",
     }
+
+
+# Docker + Local Celery settings
+CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL")
+CELERY_RESULT_BACKEND = os.environ.get("CELERY_RESULT_BACKEND")
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": os.environ.get("CACHE_URL"),
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+    },
+    # "versatileimagefield_cache": {
+    #     "BACKEND": "django_redis.cache.RedisCache",
+    #     "LOCATION": os.environ.get(
+    #         "versatileimagefield_cache"
+    #     ),  # Change this if your Redis server is on a different host/port
+    #     "OPTIONS": {
+    #         "CLIENT_CLASS": "django_redis.client.DefaultClient",
+    #     },
+    #     "TIMEOUT": 5 * 24 * 3600,
+    # },
+}
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=2),
+    "ALGORITHM": "HS256",
+    "AUTH_HEADER_TYPES": ("Bearer",),
+}
